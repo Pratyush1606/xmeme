@@ -1,0 +1,44 @@
+{% load rest_framework %}
+
+<html lang="en">
+    <head>
+        <title>Xmeme</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    </style>
+
+    <body>
+        <h1 class="text-center">Hello there!</h1>
+        <h2 class="text-center">This meme has been created by {{meme.name}}, please edit it nicely and carefully :)</h2>
+        <h3 class="text-center">Fill the form to update the data</h3>
+
+        <div class="container" style="width:50%; background-color: rgba(127, 143, 185, 0.842);">
+            <form class="form-group" action='{% url "update_meme" meme.id %}' method="POST">
+                {% csrf_token %}
+                {% render_form form %}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit Meme</button>
+                </div>
+            </form>
+        </div>
+
+        <br>
+
+        <div class="text-center">
+            <a class="btn btn-primary" href="{% url 'meme_list' %}">Cancel</a>
+        </div>
+
+    </body>
+</html>
