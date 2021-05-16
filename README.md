@@ -168,6 +168,7 @@ curl --location --request PATCH 'http://localhost:8081/memes<id>' \
 * Migrate to the database
 
     ```bash
+    python3 manage.py makemigrations
     python3 manage.py migrate
     ```
 
